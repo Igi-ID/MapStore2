@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // const vis = require('vis/index-timeline-graph2d'); // debug version. Doesn't work with uglify plugin, probably because of this issue: https://github.com/almende/vis/issues/3290
-import vis from 'vis/dist/vis-timeline-graph2d.min';
+import vis from 'vis-timeline/dist/vis-timeline-graph2d.min';
 
 /*
  * This override enables editing for BackgroundItem
@@ -43,7 +43,7 @@ vis.timeline.components.items.BackgroundItem.prototype._createDomElement = funct
     }
 };
 
-import 'vis/dist/vis-timeline-graph2d.min.css';
+import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 
 import {
     difference,
@@ -253,7 +253,11 @@ class Timeline extends React.Component {
             // rangeItems must have an ID.
             // so they can be updated without re-rendering all other items
             // this is typically used when editing range.
-            const dataSet = this.$el && this.$el.itemsData && this.$el.itemsData.getDataSet();
+            // console.log(this.$el)
+            // console.log('FIND MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+            // const dataSet = this.$el && this.$el.itemsData && this.$el.itemsData.getDataSet();
+            // const dataSet = this?.$el && this.$el.groupsData && this.$el.groupsData.getDataSet();
+            const dataSet = this?.$el?.groupsData?.getDataSet();
             if (dataSet) {
                 const itemsToUpdate = intersectionBy(rangeItems || [], prevProps.rangeItems || [], "id");
                 const itemsToAdd = differenceBy(rangeItems || [], prevProps.rangeItems || [], "id");
