@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // const vis = require('vis/index-timeline-graph2d'); // debug version. Doesn't work with uglify plugin, probably because of this issue: https://github.com/almende/vis/issues/3290
-import vis from 'vis-timeline/dist/vis-timeline-graph2d.min';
+import * as vis from 'vis-timeline/standalone/esm/vis-timeline-graph2d.min';
 
 /*
  * This override enables editing for BackgroundItem
