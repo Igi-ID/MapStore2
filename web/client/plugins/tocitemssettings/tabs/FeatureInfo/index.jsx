@@ -23,6 +23,19 @@ const responses = {
     text
 };
 
+const _properties = {
+    titleId: 'layerProperties.propertiesFormatTitle',
+    descId: 'layerProperties.propertiesFormatDescription',
+    glyph: 'ext-json',
+    body: () => (
+        <div>
+            <div><Message msgId="layerProperties.exampleOfResponse" /></div>
+            <br />
+            <JSONViewer response={responses.json} />
+        </div>
+    ) 
+}
+
 
 const formatCards = {
     HIDDEN: {
@@ -54,19 +67,35 @@ const formatCards = {
             </div>
         )
     },
-    PROPERTIES: {
-        titleId: 'layerProperties.propertiesFormatTitle',
-        descId: 'layerProperties.propertiesFormatDescription',
-        glyph: 'ext-json',
-        body: () => (
-            <div>
-                <div><Message msgId="layerProperties.exampleOfResponse" /></div>
+    PROPERTIES: _properties,
+    /*    */
+    GEOJSON: _properties,
+
+    TEMPLATE: {
+        titleId: 'layerProperties.templateFormatTitle',
+        descId: 'layerProperties.templateFormatDescription',
+        glyph: 'ext-empty',
+        body: ({ template = '', ...props }) => (
+            <div className="template-html-renderer" >
+                <div>{template && template !== '<p><br></p>' ? <Message msgId="layerProperties.templatePreview" /> : null}</div>
                 <br />
-                <JSONViewer response={responses.json} />
+                <div>
+                    {template && template !== '<p><br></p>' ?
+                        <HtmlRenderer html={template} />
+                        :
+                        <span>
+                            <p><Message msgId="layerProperties.templateFormatInfoAlert2" msgParams={{ attribute: '{ }' }} /></p>
+                            <pre>
+                                <HTML msgId="layerProperties.templateFormatInfoAlertExample"/>
+                            </pre>
+                            <p><small><Message msgId="layerProperties.templateFormatInfoAlert1" /></small>&nbsp;(&nbsp;<Glyphicon glyph="pencil" />&nbsp;)</p>
+                        </span>}
+                    <FeatureInfoEditor template={template} {...props} />
+                </div>
             </div>
         )
     },
-    TEMPLATE: {
+    TEMPLATE_ALT: {
         titleId: 'layerProperties.templateFormatTitle',
         descId: 'layerProperties.templateFormatDescription',
         glyph: 'ext-empty',

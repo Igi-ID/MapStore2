@@ -122,7 +122,14 @@ export const getFeatureInfoOnFeatureInfoClick = (action$, { getState = () => { }
                         const attachJSON = isHighlightEnabledSelector(getState());
                         const itemId = itemIdSelector(getState());
                         const reqId = uuid.v1();
+                        // requestParams.info_format = 'application/geo+json';
                         const param = { ...appParams, ...requestParams };
+
+                        console.log(appParams)
+                        console.log(requestParams)
+                        console.log(layer)
+                        console.log(lMetaData)
+
                         return getFeatureInfo(basePath, param, layer, {attachJSON, itemId})
                             // this 0 delay is needed for vector/3dtiles layer because makes the response async and give time to the GUI to render
                             // these type of layers don't perform requests to the server because the values are taken from the client map so the response were applied synchronously

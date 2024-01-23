@@ -25,7 +25,7 @@ let MapInfoUtils;
  * specifies which info formats are currently supported
  */
 //           default format ↴
-export const AVAILABLE_FORMAT = ['TEXT', 'PROPERTIES', 'HTML', 'TEMPLATE'];
+export const AVAILABLE_FORMAT = ['TEXT', 'PROPERTIES', 'HTML', 'TEMPLATE', 'GEOJSON'];
 
 export const EMPTY_RESOURCE_VALUE = 'NODATA';
 
@@ -221,6 +221,7 @@ export const getViewers = () => {
     return {
         [INFO_FORMATS.PROPERTIES]: JSONViewer,
         [INFO_FORMATS.JSON]: JSONViewer,
+        [INFO_FORMATS.PROPERTIES_ALT]: JSONViewer,
         [INFO_FORMATS.HTML]: HTMLViewer,
         [INFO_FORMATS.TEXT]: TextViewer
     };

@@ -11,7 +11,9 @@ export const INFO_FORMATS = {
     "HTML": "text/html",
     "JSONP": "text/javascript",
     "PROPERTIES": "application/json",
+    /*"PROPERTIES_ALT": "application/geo+json",*/
     "JSON": "application/json",
+    "GEOJSON": "application/geo+json",
     "GML2": "application/vnd.ogc.gml",
     "GML3": "application/vnd.ogc.gml/3.1.1",
     "TEMPLATE": "application/json"
@@ -22,6 +24,7 @@ export const INFO_FORMATS_BY_MIME_TYPE = {
     "text/html": "HTML",
     "text/javascript": "JSONP",
     "application/json": "PROPERTIES",
+    "application/geo+json": "PROPERTIES",
     "application/vnd.ogc.gml": "GML2",
     "application/vnd.ogc.gml/3.1.1": "GML3"
 };

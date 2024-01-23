@@ -24,9 +24,15 @@ function FeatureInfoFormatSelector({
     onInfoFormatChange,
     selectProps
 }) {
+    console.log(availableInfoFormat)
     const filtered = Object.keys(availableInfoFormat).reduce((acc, key) => {
+        console.log(acc)
+        console.log(key)
         const values = Object.keys(acc).map(item => acc[item]);
+        console.log(values)
+        // REMOVE_ME you can add an extra filter in exist value, do not show PROPERTIES_ALT
         const exist = values.some(item => item === availableInfoFormat[key]);
+        console.log(exist)
         if (!exist) {
             return {
                 ...acc,
